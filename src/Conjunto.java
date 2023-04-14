@@ -1,11 +1,10 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class Conjunto {
 
 
-    public void adicionaElemento() {
 
-    }
 
     public boolean pertence(int valor,ArrayList<Integer> conjunto) {
         for (int i = 0; i < conjunto.size(); i++) {
