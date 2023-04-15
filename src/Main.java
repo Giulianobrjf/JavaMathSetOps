@@ -13,7 +13,7 @@ public class Main {
             conjuntoB.add(i);
 
         }
-        conjuntoA.add(7);
+        conjuntoB.add(5);
 
 
 
@@ -26,8 +26,8 @@ public class Main {
 
             System.out.println("Menu");
             System.out.println("\t 0. Sair");
-            System.out.println("\t 1. Pert");
-            System.out.println("\t 2. Ordem");
+            System.out.println("\t 1. Pertencimento");
+            System.out.println("\t 2. Contido ou igual");
             System.out.println("\t 3. Matriz");
             System.out.println("Opcao: ");
             opcao = elemento.nextInt();
@@ -46,16 +46,13 @@ public class Main {
 
          case 2 -> {
              if (e.contido(conjuntoA,conjuntoB)) {
-                 System.out.println(conjuntoA + " É contido ao conjunto");
-             } else {
-                 System.out.println(conjuntoA + " Não é contido ao conjunto");
+                 System.out.println(conjuntoA + " É contido mas não é igual ao " + conjuntoB);
+             } else if(e.igual(conjuntoA,conjuntoB)){
+                 System.out.println(conjuntoA + " É contido e igual ao "+ conjuntoB);
+             }else{
+                 System.out.println(conjuntoA + " Não é contido nem igual ao " + conjuntoB);
              }
          }
-        case 3 -> {
-            System.out.println(conjuntoA + " É contido e igual ");
-            System.out.println(conjuntoA + " É contido mas não é igual");
-            System.out.println(conjuntoA + " Não é contido nem igual");
-    }
     default -> System.exit(1406);
 }
 

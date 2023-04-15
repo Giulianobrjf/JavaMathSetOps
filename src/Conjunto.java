@@ -15,7 +15,6 @@ public class Conjunto {
         return false;
     }
         public boolean contido(ArrayList<Integer> conjuntoX, ArrayList<Integer> conjuntoY) {
-            int a = 0;
 
             for (int i = 0; i < conjuntoX.size(); i++) {
                 if(!pertence(conjuntoX.get(i),conjuntoY)){
@@ -23,6 +22,14 @@ public class Conjunto {
                 }
             }
             return true;
+        }
+        public boolean igual (ArrayList<Integer> conjuntoX, ArrayList<Integer> conjuntoY){
+                if(!contido(conjuntoX,conjuntoY) && conjuntoX.size() == conjuntoY.size() ){
+                    return  true;
+
+                }
+                return false;
+
         }
 
 }
