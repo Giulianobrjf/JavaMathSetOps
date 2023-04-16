@@ -75,5 +75,26 @@ public class Conjunto {
         }
         return produtocartesiano;
     }
+
+    public String conjuntoDasPartes(ArrayList<Integer> conjuntoX) {
+        String conjuntodaspartes = "O conjunto das partes é: (Vazio) ";
+        for (int i = 0; i < conjuntoX.size(); i++) {
+            conjuntodaspartes = conjuntodaspartes + "("+ conjuntoX.get(i) + ") ";
+
+        }
+        for (int ia = 1; ia < conjuntoX.size(); ia++) {
+            for (int i = 0; i < conjuntoX.size(); i++) {
+
+                if (conjuntoX.get(i) != conjuntoX.get(ia)) {
+
+                    conjuntodaspartes = conjuntodaspartes + "(" + conjuntoX.get(i) + "," + conjuntoX.get(ia) + ")";
+
+                }
+                conjuntodaspartes = conjuntodaspartes + parte;
+            }
+        }
+        return conjuntodaspartes;
+
+    }
 }
 

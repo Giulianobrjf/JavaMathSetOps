@@ -8,13 +8,11 @@ public class Main {
         ArrayList<Integer> conjuntoA = new ArrayList();
         ArrayList<Integer> conjuntoB = new ArrayList();
 
-        for(int i = 1;i<6;i++){
+        for(int i = 1;i<4;i++){
             conjuntoA.add(i);
             conjuntoB.add(i);
 
         }
-        conjuntoA.add(6);
-        conjuntoB.add(10);
 
 
 
@@ -30,6 +28,7 @@ public class Main {
             System.out.println("\t 3. União");
             System.out.println("\t 4. Interseção");
             System.out.println("\t 5. Produto Cartesiano");
+            System.out.println("\t 6. Conjunto das Partes");
             System.out.println("Opcao: ");
             opcao = elemento.nextInt();
          switch (opcao) {
@@ -63,6 +62,9 @@ public class Main {
          }
          case 5 -> {
              System.out.println(e.produtoCartesiano(conjuntoA,conjuntoB));
+         }
+         case 6 ->{
+             System.out.println(e.conjuntoDasPartes(conjuntoA));
          }
     default -> System.exit(1406);
 }
