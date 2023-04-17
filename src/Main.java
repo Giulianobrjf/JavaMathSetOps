@@ -13,7 +13,7 @@ public class Main {
             conjuntoB.add(i);
 
         }
-        conjuntoA.add(6);
+        conjuntoB.add(6);
 
         Conjunto e = new Conjunto();
         int opcao;

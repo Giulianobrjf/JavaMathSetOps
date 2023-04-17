@@ -48,17 +48,13 @@ public class Conjunto {
         return conjuntoUniao;
     }
 
-    public List intersecao(ArrayList<Integer> conjuntoX, ArrayList<Integer> conjuntoY) {
-        ArrayList<Integer> conjuntoIntersecao = new ArrayList();
+    public List intersecao(List<Integer> conjuntoX, List<Integer> conjuntoY) {
+        List<Integer> conjuntoIntersecao = new ArrayList();
         for (int i = 0; i < conjuntoX.size(); i++) {
-            conjuntoIntersecao.add(conjuntoX.get(i));
-        }
-        for (int i = 0; i < conjuntoY.size(); i++) {
-            int valorteste = conjuntoY.get(i);
-            if (!pertence(valorteste, conjuntoX)) {
-                conjuntoIntersecao.remove(conjuntoIntersecao.get(i));
+            int valorteste = conjuntoX.get(i);
+            if (pertence(valorteste, conjuntoY)) {
+                conjuntoIntersecao.add(conjuntoX.get(i));
             }
-
         }
         return conjuntoIntersecao;
     }
