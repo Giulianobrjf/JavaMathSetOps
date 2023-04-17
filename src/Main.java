@@ -8,13 +8,12 @@ public class Main {
         ArrayList<Integer> conjuntoA = new ArrayList();
         ArrayList<Integer> conjuntoB = new ArrayList();
 
-        for(int i = 1;i<4;i++){
+        for(int i = 1;i<3;i++){
             conjuntoA.add(i);
             conjuntoB.add(i);
 
         }
-
-
+        conjuntoA.add(6);
 
         Conjunto e = new Conjunto();
         int opcao;
@@ -28,7 +27,10 @@ public class Main {
             System.out.println("\t 3. União");
             System.out.println("\t 4. Interseção");
             System.out.println("\t 5. Produto Cartesiano");
-            System.out.println("\t 6. Conjunto das Partes");
+            System.out.println("\t 6. Reversão Produto Cartesiano");
+            System.out.println("\t 7. Conjunto das Partes");
+            System.out.println("\t 8. Reversão Conjunto das Partes");
+            System.out.println("\t 9. Diferença dos Conjuntos");
             System.out.println("Opcao: ");
             opcao = elemento.nextInt();
          switch (opcao) {
@@ -61,10 +63,21 @@ public class Main {
 
          }
          case 5 -> {
-             System.out.println(e.produtoCartesiano(conjuntoA,conjuntoB));
+             System.out.println("O produto Cartesiano é: "+e.produtoCartesiano(conjuntoA,conjuntoB));
          }
          case 6 ->{
+             System.out.println(e.reverteProdutoCartesiano(e.produtoCartesiano(conjuntoA,conjuntoB)));
+         }
+         case 7 ->{
              System.out.println(e.conjuntoDasPartes(conjuntoA));
+         }
+         case 8 -> {
+             System.out.println(e.reverteConjuntoDasPartes(e.conjuntoDasPartes(conjuntoA)));
+         }
+         case 9 ->{
+             System.out.print("Digite 0 para fazer A/B ou 1 para B/A ");
+             int escolha = elemento.nextInt();
+             System.out.print(e.diferencaDeConjuntos(escolha,conjuntoA,conjuntoB));
          }
     default -> System.exit(1406);
 }
