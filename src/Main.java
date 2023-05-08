@@ -7,20 +7,19 @@ public class Main {
 
         ArrayList<Integer> conjuntoA = new ArrayList();
         ArrayList<Integer> conjuntoB = new ArrayList();
+        ArrayList<Integer> conjuntoC = new ArrayList();
 
-        for(int i = 1;i<3;i++){
-            conjuntoA.add(i);
-            conjuntoB.add(i);
-
-        }
-        conjuntoB.add(6);
+        conjuntoA.add(1);
+        conjuntoA.add(2);
+        conjuntoB.add(2);
+        conjuntoB.add(11);
 
         Conjunto e = new Conjunto();
         int opcao;
 
         do {
 
-            System.out.println("Menu");
+            System.out.println("\t Menu");
             System.out.println("\t 0. Sair");
             System.out.println("\t 1. Pertencimento");
             System.out.println("\t 2. Contido ou igual");
@@ -31,6 +30,14 @@ public class Main {
             System.out.println("\t 7. Conjunto das Partes");
             System.out.println("\t 8. Reversão Conjunto das Partes");
             System.out.println("\t 9. Diferença dos Conjuntos");
+            System.out.println("\t 10. Menor que");
+            System.out.println("\t 11. Maior que");
+            System.out.println("\t 12. Igual a");
+            System.out.println("\t 13. Quadrado de");
+            System.out.println("\t 14. Raiz de");
+            System.out.println("\t 15. Injetora ou Funcional");
+            System.out.println("\t 16. Total");
+
             System.out.println("Opcao: ");
             opcao = elemento.nextInt();
          switch (opcao) {
@@ -79,6 +86,39 @@ public class Main {
              int escolha = elemento.nextInt();
              System.out.print(e.diferencaDeConjuntos(escolha,conjuntoA,conjuntoB));
          }
+         case 10 ->{
+             System.out.print(e.menorQue(conjuntoA,conjuntoB));
+         }
+             case 11 ->{
+                 System.out.print(e.maiorQue(conjuntoA,conjuntoB));
+             }
+             case 12 ->{
+                 System.out.print(e.igualQue(conjuntoA,conjuntoB));
+             }
+             case 13 ->{
+                 System.out.print(e.quadradoDe(conjuntoA,conjuntoB));
+             }
+             case 14 ->{
+                 System.out.print(e.raizDe(conjuntoA,conjuntoB));
+             }
+             case 15 -> {
+                 System.out.print(e.funcionalInjetora(e.menorQue(conjuntoA,conjuntoB)));
+            }
+             case 16 ->{
+                 System.out.print(e.total(e.menorQue(conjuntoA,conjuntoB),conjuntoA,conjuntoB));
+         }
+             case 17 ->{
+             }
+             case 18 ->{
+             }
+             case 19 ->{
+             }
+             case 20 ->{
+             }
+             case 21 ->{
+             }
+
+
     default -> System.exit(1406);
 }
 
