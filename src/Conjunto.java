@@ -149,6 +149,31 @@ public class Conjunto {
         return menorQue;
     }
 
+    public List<ArrayList<Integer>> menorQueComposta(ArrayList<Integer> conjuntoX, ArrayList<Integer> conjuntoY, ArrayList<Integer> conjuntoZ) {
+        List<ArrayList<Integer>> menorQueXY = menorQue(conjuntoX, conjuntoY);
+        List<ArrayList<Integer>> menorQueComposta = new ArrayList<>();
+
+        for (int i = 0; i < menorQueXY.size(); i++) {
+            int x = menorQueXY.get(i).get(0);
+            int y = menorQueXY.get(i).get(1);
+            for (int j = 0; j < conjuntoZ.size(); j++) {
+                int z = conjuntoZ.get(j);
+                if (y < z) {
+                    ArrayList<Integer> temporarioComposta = new ArrayList<>();
+                    if(pertence(x,temporarioComposta)) {
+                        break;
+                    }
+                    temporarioComposta.add(x);
+                    temporarioComposta.add(y);
+                    temporarioComposta.add(z);
+                    menorQueComposta.add(temporarioComposta);
+                }
+            }
+        }
+
+        return menorQueComposta;
+    }
+
     public List<ArrayList<Integer>> maiorQue(ArrayList<Integer> conjuntoX, ArrayList<Integer> conjuntoY) {
         ArrayList<ArrayList<Integer>> maiorQue = new ArrayList<>();
         for (int j = 0; j < conjuntoX.size(); j++) {
@@ -164,7 +189,30 @@ public class Conjunto {
         }
         return maiorQue;
     }
+    public List<ArrayList<Integer>> maiorQueComposta(ArrayList<Integer> conjuntoX, ArrayList<Integer> conjuntoY, ArrayList<Integer> conjuntoZ) {
+        List<ArrayList<Integer>> maiorQueXY = maiorQue(conjuntoX, conjuntoY);
+        List<ArrayList<Integer>> maiorQueComposta = new ArrayList<>();
 
+        for (int i = 0; i < maiorQueXY.size(); i++) {
+            int x = maiorQueXY.get(i).get(0);
+            int y = maiorQueXY.get(i).get(1);
+            for (int j = 0; j < conjuntoZ.size(); j++) {
+                int z = conjuntoZ.get(j);
+                if (y > z) {
+                    ArrayList<Integer> temporarioComposta = new ArrayList<>();
+                    if(pertence(x,temporarioComposta)) {
+                        break;
+                    }
+                    temporarioComposta.add(x);
+                    temporarioComposta.add(y);
+                    temporarioComposta.add(z);
+                    maiorQueComposta.add(temporarioComposta);
+                }
+            }
+        }
+
+        return maiorQueComposta;
+    }
     public List<ArrayList<Integer>> igualQue(ArrayList<Integer> conjuntoX, ArrayList<Integer> conjuntoY) {
         ArrayList<ArrayList<Integer>> igualQue = new ArrayList<>();
         for (int j = 0; j < conjuntoX.size(); j++) {
@@ -215,11 +263,9 @@ public class Conjunto {
         return raizDe;
     }
 
-    public String funcionalInjetora(List<ArrayList<Integer>> relacao) {
+    public String funcional(List<ArrayList<Integer>> relacao) {
         String texto = "Não é Funcional nem Injetora ";
         boolean funcional = true;
-        boolean injetora = true;
-
 
         ArrayList<Integer> classificacao = new ArrayList<>();
 
@@ -230,23 +276,33 @@ public class Conjunto {
             classificacao.add(relacao.get(i).get(0));
         }
 
+        if (funcional) {
+            texto = "É Funcional";
+        }
+        return texto;
+    }
+
+    public String injetora(List<ArrayList<Integer>> relacao) {
+        String texto = "Não é Funcional nem Injetora ";
+        boolean injetora = true;
+
+
+        ArrayList<Integer> classificacao = new ArrayList<>();
         for (int i = 0; i < relacao.size(); i++) {
             if (pertence(relacao.get(i).get(1), classificacao)) {
                 injetora = false;
             }
             classificacao.add(relacao.get(i).get(1));
         }
-        if (injetora == true) {
-            texto = "É Injetora";
-        }
-        if (funcional == true) {
+
+        if (injetora) {
             texto = "É Funcional";
         }
         return texto;
     }
 
     public String total(List<ArrayList<Integer>> relacao, ArrayList<Integer> conjuntoX, ArrayList<Integer> conjuntoY) {
-        String texto = "Não é Total";
+        String texto = "Não é Total nem Sobrejetora";
         boolean total = true;
 
         ArrayList<Integer> classificacao = new ArrayList<>();
@@ -267,11 +323,34 @@ public class Conjunto {
         if (total) {
             texto = " É Total";
         }
+        return texto;
+    }
+
+    public String sobrejetora(List<ArrayList<Integer>> relacao, ArrayList<Integer> conjuntoX, ArrayList<Integer> conjuntoY) {
+        String texto = "Não é Sobrejetora";
+        boolean sobrejetora = true;
+
+        ArrayList<Integer> classificacao = new ArrayList<>();
+        for (int i = 0; i < relacao.size(); i++) {
+            if (!pertence(relacao.get(i).get(1), classificacao)) {
+                classificacao.add(relacao.get(i).get(1));
+            }
+        }
+
+        for (int i = 0; i < conjuntoY.size(); i++) {
+            if (!pertence(conjuntoY.get(i), classificacao)) {
+                sobrejetora = false;
+                break;
+            }
+        }
+
+        if (sobrejetora) {
+            texto = "É Sobrejetora";
+        }
 
         return texto;
     }
 }
-
 
 
 

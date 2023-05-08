@@ -9,10 +9,15 @@ public class Main {
         ArrayList<Integer> conjuntoB = new ArrayList();
         ArrayList<Integer> conjuntoC = new ArrayList();
 
-        conjuntoA.add(1);
-        conjuntoA.add(2);
+        conjuntoA.add(5);
+        conjuntoA.add(4);
+
+        conjuntoB.add(3);
         conjuntoB.add(2);
-        conjuntoB.add(11);
+
+        conjuntoC.add(1);
+        conjuntoC.add(0);
+
 
         Conjunto e = new Conjunto();
         int opcao;
@@ -35,8 +40,11 @@ public class Main {
             System.out.println("\t 12. Igual a");
             System.out.println("\t 13. Quadrado de");
             System.out.println("\t 14. Raiz de");
-            System.out.println("\t 15. Injetora ou Funcional");
-            System.out.println("\t 16. Total");
+            System.out.println("\t 15. Funcional");
+            System.out.println("\t 17. Total");
+            System.out.println("\t 18. Sobrejetora");
+            System.out.println("\t 19. Menor que Composta");
+            System.out.println("\t 20. Maior que Composta");
 
             System.out.println("Opcao: ");
             opcao = elemento.nextInt();
@@ -102,18 +110,22 @@ public class Main {
                  System.out.print(e.raizDe(conjuntoA,conjuntoB));
              }
              case 15 -> {
-                 System.out.print(e.funcionalInjetora(e.menorQue(conjuntoA,conjuntoB)));
+                 System.out.print(e.funcional(e.menorQue(conjuntoA,conjuntoB)));
             }
              case 16 ->{
-                 System.out.print(e.total(e.menorQue(conjuntoA,conjuntoB),conjuntoA,conjuntoB));
-         }
+                 System.out.print(e.injetora(e.menorQue(conjuntoA,conjuntoB)));
+             }
              case 17 ->{
+                 System.out.print(e.total(e.menorQue(conjuntoA,conjuntoB),conjuntoA,conjuntoB));
              }
              case 18 ->{
+                 System.out.println(e.sobrejetora(e.menorQue(conjuntoA,conjuntoB),conjuntoA,conjuntoB));
              }
              case 19 ->{
+                 System.out.println(e.menorQueComposta(conjuntoA,conjuntoB,conjuntoC));
              }
              case 20 ->{
+                 System.out.println(e.maiorQueComposta(conjuntoA,conjuntoB,conjuntoC));
              }
              case 21 ->{
              }
