@@ -328,7 +328,6 @@ public class Conjunto {
     }
 
     public boolean funcional(List<ArrayList<Integer>> relacao) {
-        String texto = "Não é Funcional";
         boolean funcional = true;
 
         ArrayList<Integer> classificacao = new ArrayList<>();
