@@ -9,14 +9,16 @@ public class Main {
         ArrayList<Integer> conjuntoB = new ArrayList();
         ArrayList<Integer> conjuntoC = new ArrayList();
 
-        conjuntoA.add(5);
-        conjuntoA.add(4);
+        conjuntoA.add(1);
+        conjuntoA.add(2);
 
-        conjuntoB.add(3);
-        conjuntoB.add(2);
 
-        conjuntoC.add(1);
-        conjuntoC.add(0);
+        conjuntoB.add(1);
+        conjuntoB.add(4);
+
+        conjuntoC.add(5);
+        conjuntoC.add(6);
+
 
 
         Conjunto e = new Conjunto();
@@ -45,6 +47,18 @@ public class Main {
             System.out.println("\t 18. Sobrejetora");
             System.out.println("\t 19. Menor que Composta");
             System.out.println("\t 20. Maior que Composta");
+            System.out.println("\t 21. Igual que Composta");
+            System.out.println("\t 22. Quadrado de Composta");
+            System.out.println("\t 23. Raiz de Composta");
+            System.out.println("\t 24. Monomorfismo Composta");
+            System.out.println("\t 25. Epimorfismo Compsota");
+            System.out.println("\t 26. Isomorfismo Composta");
+            System.out.println("\t 27. Funcional Composta");
+            System.out.println("\t 28. Total Composta");
+            System.out.println("\t 29. Sobrejetora Composta");
+            System.out.println("\t 30. Monomorfismo Composta");
+            System.out.println("\t 31. Epimorfismo Composta");
+            System.out.println("\t 32. Isomorfismo Composta");
 
             System.out.println("Opcao: ");
             opcao = elemento.nextInt();
@@ -116,10 +130,10 @@ public class Main {
                  System.out.print(e.injetora(e.menorQue(conjuntoA,conjuntoB)));
              }
              case 17 ->{
-                 System.out.print(e.total(e.menorQue(conjuntoA,conjuntoB),conjuntoA,conjuntoB));
+                 System.out.print(e.total(e.raizDe(conjuntoA,conjuntoB),conjuntoA));
              }
              case 18 ->{
-                 System.out.println(e.sobrejetora(e.menorQue(conjuntoA,conjuntoB),conjuntoA,conjuntoB));
+                 System.out.println(e.sobrejetora(e.menorQue(conjuntoA,conjuntoB),conjuntoB));
              }
              case 19 ->{
                  System.out.println(e.menorQueComposta(conjuntoA,conjuntoB,conjuntoC));
@@ -128,7 +142,30 @@ public class Main {
                  System.out.println(e.maiorQueComposta(conjuntoA,conjuntoB,conjuntoC));
              }
              case 21 ->{
+                 System.out.println(e.igualQueComposta(conjuntoA,conjuntoB,conjuntoC));
              }
+             case 22 ->{
+                 System.out.println(e.quadradoDeComposta(conjuntoA,conjuntoB,conjuntoC));
+             }
+             case 23 ->{
+                 System.out.println(e.raizDeComposta(conjuntoA,conjuntoB,conjuntoC));
+             }
+             case 24 ->{
+                 System.out.println(e.raizDe(conjuntoA,conjuntoB));
+                e.monomorfismo(e.quadradoDe(conjuntoA,conjuntoB),conjuntoA);
+             }
+             case 25 ->{
+                 System.out.println(e.raizDe(conjuntoA,conjuntoB));
+                e.epimorfismo(e.raizDe(conjuntoA,conjuntoB),conjuntoB);
+             }
+             case 26 ->{
+                 System.out.println(e.raizDe(conjuntoA,conjuntoB));
+                 e.isomorfismo(e.raizDe(conjuntoA,conjuntoB),conjuntoA,conjuntoB);
+             }
+             case 27 ->{
+
+             }
+
 
 
     default -> System.exit(1406);

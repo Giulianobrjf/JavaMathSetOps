@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Conjunto {
@@ -160,17 +159,14 @@ public class Conjunto {
                 int z = conjuntoZ.get(j);
                 if (y < z) {
                     ArrayList<Integer> temporarioComposta = new ArrayList<>();
-                    if(pertence(x,temporarioComposta)) {
-                        break;
-                    }
-                    temporarioComposta.add(x);
-                    temporarioComposta.add(y);
-                    temporarioComposta.add(z);
-                    menorQueComposta.add(temporarioComposta);
+                        temporarioComposta.add(x);
+                        temporarioComposta.add(z);
+                        if (!menorQueComposta.contains(temporarioComposta)) {
+                            menorQueComposta.add(temporarioComposta);
+                        }
                 }
             }
         }
-
         return menorQueComposta;
     }
 
@@ -189,6 +185,8 @@ public class Conjunto {
         }
         return maiorQue;
     }
+
+
     public List<ArrayList<Integer>> maiorQueComposta(ArrayList<Integer> conjuntoX, ArrayList<Integer> conjuntoY, ArrayList<Integer> conjuntoZ) {
         List<ArrayList<Integer>> maiorQueXY = maiorQue(conjuntoX, conjuntoY);
         List<ArrayList<Integer>> maiorQueComposta = new ArrayList<>();
@@ -200,13 +198,11 @@ public class Conjunto {
                 int z = conjuntoZ.get(j);
                 if (y > z) {
                     ArrayList<Integer> temporarioComposta = new ArrayList<>();
-                    if(pertence(x,temporarioComposta)) {
-                        break;
-                    }
                     temporarioComposta.add(x);
-                    temporarioComposta.add(y);
                     temporarioComposta.add(z);
-                    maiorQueComposta.add(temporarioComposta);
+                    if (!maiorQueComposta.contains(temporarioComposta)) {
+                        maiorQueComposta.add(temporarioComposta);
+                    }
                 }
             }
         }
@@ -230,7 +226,29 @@ public class Conjunto {
         }
         return igualQue;
     }
+    public List<ArrayList<Integer>> igualQueComposta(ArrayList<Integer> conjuntoX, ArrayList<Integer> conjuntoY, ArrayList<Integer> conjuntoZ) {
+        List<ArrayList<Integer>> igualQueXY = igualQue(conjuntoX, conjuntoY);
+        List<ArrayList<Integer>> igualQueComposta = new ArrayList<>();
 
+        for (int i = 0; i < igualQueXY.size(); i++) {
+            int x = igualQueXY.get(i).get(0);
+            int y = igualQueXY.get(i).get(1);
+            for (int j = 0; j < conjuntoZ.size(); j++) {
+                int z = conjuntoZ.get(j);
+                if (y == z) {
+                    ArrayList<Integer> temporarioComposta = new ArrayList<>();
+                    temporarioComposta.add(x);
+                    temporarioComposta.add(z);
+                    if (!igualQueComposta.contains(temporarioComposta)) {
+                         igualQueComposta.add(temporarioComposta);
+                    }
+
+                }
+            }
+        }
+
+        return igualQueComposta;
+    }
     public List<ArrayList<Integer>> quadradoDe(ArrayList<Integer> conjuntoX, ArrayList<Integer> conjuntoY) {
         ArrayList<ArrayList<Integer>> quadradoDe = new ArrayList<>();
         for (int j = 0; j < conjuntoX.size(); j++) {
@@ -245,6 +263,29 @@ public class Conjunto {
             }
         }
         return quadradoDe;
+    }
+    public List<ArrayList<Integer>> quadradoDeComposta(ArrayList<Integer> conjuntoX, ArrayList<Integer> conjuntoY, ArrayList<Integer> conjuntoZ) {
+        List<ArrayList<Integer>> quadradoDeXY = quadradoDe(conjuntoX, conjuntoY);
+        List<ArrayList<Integer>> quadradoDeComposta = new ArrayList<>();
+
+        for (int i = 0; i < quadradoDeXY.size(); i++) {
+            int x = quadradoDeXY.get(i).get(0);
+            int y = quadradoDeXY.get(i).get(1);
+            for (int j = 0; j < conjuntoZ.size(); j++) {
+                int z = conjuntoZ.get(j);
+                if (x == y * y) {
+                    ArrayList<Integer> temporarioComposta = new ArrayList<>();
+                    temporarioComposta.add(x);
+                    temporarioComposta.add(z);
+                    if (!quadradoDeComposta.contains(temporarioComposta)) {
+                        quadradoDeComposta.add(temporarioComposta);
+                    }
+
+                }
+            }
+        }
+
+        return quadradoDeComposta;
     }
 
     public List<ArrayList<Integer>> raizDe(ArrayList<Integer> conjuntoX, ArrayList<Integer> conjuntoY) {
@@ -262,9 +303,32 @@ public class Conjunto {
         }
         return raizDe;
     }
+    public List<ArrayList<Integer>> raizDeComposta(ArrayList<Integer> conjuntoX, ArrayList<Integer> conjuntoY, ArrayList<Integer> conjuntoZ) {
+        List<ArrayList<Integer>> raizDeXY = raizDe(conjuntoX, conjuntoY);
+        List<ArrayList<Integer>> raizDeComposta = new ArrayList<>();
 
-    public String funcional(List<ArrayList<Integer>> relacao) {
-        String texto = "Não é Funcional nem Injetora ";
+        for (int i = 0; i < raizDeXY.size(); i++) {
+            int x = raizDeXY.get(i).get(0);
+            int y = raizDeXY.get(i).get(1);
+            for (int j = 0; j < conjuntoZ.size(); j++) {
+                int z = conjuntoZ.get(j);
+                if (x * x == y) {
+                    ArrayList<Integer> temporarioComposta = new ArrayList<>();
+                    temporarioComposta.add(x);
+                    temporarioComposta.add(z);
+                    if (!raizDeComposta.contains(temporarioComposta)) {
+                        raizDeComposta.add(temporarioComposta);
+                    }
+
+                }
+            }
+        }
+
+        return raizDeComposta;
+    }
+
+    public boolean funcional(List<ArrayList<Integer>> relacao) {
+        String texto = "Não é Funcional";
         boolean funcional = true;
 
         ArrayList<Integer> classificacao = new ArrayList<>();
@@ -277,13 +341,14 @@ public class Conjunto {
         }
 
         if (funcional) {
-            texto = "É Funcional";
+            System.out.println("É Funcional");
+        }else{
+            System.out.println("Não é Funcional");
         }
-        return texto;
+        return funcional;
     }
 
-    public String injetora(List<ArrayList<Integer>> relacao) {
-        String texto = "Não é Funcional nem Injetora ";
+    public boolean injetora(List<ArrayList<Integer>> relacao) {
         boolean injetora = true;
 
 
@@ -296,38 +361,39 @@ public class Conjunto {
         }
 
         if (injetora) {
-            texto = "É Funcional";
+            System.out.println("É Injetora");
+        }else{
+            System.out.println("Não é Injetora");
         }
-        return texto;
+        return injetora;
     }
 
-    public String total(List<ArrayList<Integer>> relacao, ArrayList<Integer> conjuntoX, ArrayList<Integer> conjuntoY) {
-        String texto = "Não é Total nem Sobrejetora";
+    public boolean total(List<ArrayList<Integer>> relacao, ArrayList<Integer> conjuntoX) {
         boolean total = true;
 
         ArrayList<Integer> classificacao = new ArrayList<>();
         for (int i = 0; i < relacao.size(); i++) {
-            if (pertence(relacao.get(i).get(0), classificacao)) {
-                continue; // Classifica um  elemento
+            if (!pertence(relacao.get(i).get(0), classificacao)) {
+                classificacao.add(relacao.get(i).get(0));
             }
-            classificacao.add(relacao.get(i).get(0));
         }
 
         for (int i = 0; i < conjuntoX.size(); i++) {
             if (!pertence(conjuntoX.get(i), classificacao)) {
-                total = false; // Faltou um elemento
+                total = false;
                 break;
             }
         }
 
         if (total) {
-            texto = " É Total";
+            System.out.println("É Total");
+        } else {
+            System.out.println("Não é Total");
         }
-        return texto;
+        return total;
     }
 
-    public String sobrejetora(List<ArrayList<Integer>> relacao, ArrayList<Integer> conjuntoX, ArrayList<Integer> conjuntoY) {
-        String texto = "Não é Sobrejetora";
+    public boolean sobrejetora(List<ArrayList<Integer>> relacao, ArrayList<Integer> conjuntoY) {
         boolean sobrejetora = true;
 
         ArrayList<Integer> classificacao = new ArrayList<>();
@@ -345,10 +411,51 @@ public class Conjunto {
         }
 
         if (sobrejetora) {
-            texto = "É Sobrejetora";
+            System.out.println("É Sobrejetora");
+        }else{
+            System.out.println("Não é Sobrejetora");
         }
 
-        return texto;
+        return sobrejetora;
+    }
+    public boolean monomorfismo(List<ArrayList<Integer>> relacao,ArrayList<Integer> conjuntoX) {
+        boolean total = total(relacao,conjuntoX);
+        boolean injetora = injetora(relacao);
+        boolean monomorfismo = injetora && total;
+
+        if (monomorfismo) {
+            System.out.println("É Monomorfismo");
+        } else {
+            System.out.println("Não é Monomorfismo");
+        }
+
+        return monomorfismo;
+    }
+    public boolean epimorfismo(List<ArrayList<Integer>> relacao,ArrayList<Integer> conjuntoY) {
+        boolean sobrejetora = sobrejetora(relacao,conjuntoY);
+        boolean funcional = funcional(relacao);
+        boolean epimorfismo = funcional && sobrejetora;
+
+        if (epimorfismo) {
+            System.out.println("É Epimorfismo");
+        } else {
+            System.out.println("Não é Epimorfismo");
+        }
+
+        return epimorfismo;
+    }
+    public boolean isomorfismo(List<ArrayList<Integer>> relacao,ArrayList<Integer> conjuntoX,ArrayList<Integer> conjuntoY) {
+        boolean epimorfismo = epimorfismo(relacao,conjuntoY);
+        boolean monomorfismo = monomorfismo(relacao,conjuntoX);
+        boolean isomorfismo = epimorfismo && monomorfismo;
+
+        if (isomorfismo) {
+            System.out.println("É Isomorfismo");
+        } else {
+            System.out.println("Não é Isomorfismo");
+        }
+
+        return epimorfismo;
     }
 }
 
